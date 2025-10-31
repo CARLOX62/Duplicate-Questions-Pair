@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced BOW Features for Question Similarity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .duplicate {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .not-duplicate {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Advanced BOW Features for Question Similarity</h1>
+        <form method="POST">
+            <label for="q1">Question 1:</label>
+            <textarea id="q1" name="q1" rows="4" placeholder="Enter the first question..." required></textarea>
+            
+            <label for="q2">Question 2:</label>
+            <textarea id="q2" name="q2" rows="4" placeholder="Enter the second question..." required></textarea>
+            
+            <button type="submit">Check Similarity</button>
+        </form>
+        
+        {% if result %}
+        <div class="result {{ 'duplicate' if result == 'Duplicate' else 'not-duplicate' }}">
+            <p>Result: {{ result }}</p>
+            <p><strong>Question 1:</strong> {{ q1 }}</p>
+            <p><strong>Question 2:</strong> {{ q2 }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
